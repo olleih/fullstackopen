@@ -1,20 +1,18 @@
-import Content from "./components/Content"
-import Header from "./components/Header"
-import Total from "./components/Total"
+import Content from "./Content";
+import Header from "./Header";
+import Total from "./Total";
 
 const Course = ({course}) => {
 
     return (
     <div>
       <Header course={course}></Header>
-      <Content 
-          parts={course.parts} 
-      ></Content>
+      <Content course={course}/>
       <Total
           parts={course.parts} 
       ></Total>
     </div>
-  )
+  );
 
 };
 
