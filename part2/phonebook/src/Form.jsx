@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import personService from '../services/persons'
 
-const Form = ({ setPersons, persons }) => {
+const Form = ({ setPersons, persons, setMsg }) => {
 //   const baseUrl = "http://localhost:3001/persons";
   const [newPerson, setNewPerson] = useState({ name: "", number: "" });
 
@@ -24,6 +24,7 @@ const Form = ({ setPersons, persons }) => {
       setPersons(
         persons.concat({ name: newPerson.name, number: newPerson.number })
       );
+      setMsg(`Added ${newPerson.name} to the list`);
     }
     setNewPerson({ name: "", number: "" });
   };
