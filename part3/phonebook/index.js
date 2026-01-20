@@ -1,5 +1,19 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
+
+const cors = require('cors')
+
+app.use(cors())
+
+const morgan = require('morgan');
+
+morgan.token('body', (req) => {
+  return JSON.stringify(req.body);
+});
+
+app.use(
+  morgan(':method :url :status :body - :response-time ms')
+);
 
 let persons = [
     { 
@@ -22,12 +36,12 @@ let persons = [
       "name": "Mary Poppendieck", 
       "number": "39-23-6423122"
     }
-]
+];
 
 app.use(express.json());
 
 app.get('/info', (request, response) => {
-    response.send(`<h2>Info</h2><p>The phonebook has ${persons.length} entries</p><p>${new Date}</p>`)
+    response.send(`<h2>Info</h2><p>The phonebook has ${persons.length} entries</p><p>${new Date()}</p>`)
 })
 
 app.get('/api/persons', (request, response) => {
